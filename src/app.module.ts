@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApplicantsModule } from './applicants/applicants.module';
+import { WorkExperienceModule } from './work_experience/work_experience.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ApplicantsModule } from './applicants/applicants.module';
       synchronize: process.env.DB_SYNC === 'true',
     }),
     ApplicantsModule,
+    WorkExperienceModule,
   ],
 })
 export class AppModule {}
