@@ -1,0 +1,31 @@
+CREATE TABLE portfolios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    link VARCHAR(500) NULL,
+    images TEXT NULL,
+    start_date DATE NULL,
+    end_date DATE NULL,
+    applicant_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT fk_portfolios_applicant 
+    FOREIGN KEY (applicant_id) 
+    REFERENCES applicants(id) 
+    ON DELETE CASCADE
+);
+
+CREATE TABLE certifications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    certificate_name VARCHAR(255) NOT NULL,
+    organisation VARCHAR(255) NOT NULL,
+    certificate_date DATE NOT NULL,
+    certificate_id VARCHAR(255) NULL,
+    applicant_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT fk_certifications_applicant 
+    FOREIGN KEY (applicant_id) 
+    REFERENCES applicants(id) 
+    ON DELETE CASCADE
+);
