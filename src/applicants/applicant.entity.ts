@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { WorkExperience } from '../work_experience/entities/work_experience.entity';
+import { Education } from '../education/entities/education.entity';
 
 @Entity('applicants')
 export class Applicant {
@@ -42,6 +43,8 @@ export class Applicant {
   @OneToMany(() => WorkExperience, (workExperience) => workExperience.applicant, { cascade: true })
   workExperiences: WorkExperience[];
 
+  @OneToMany(() => Education, (education) => education.applicant, { cascade: true })
+  educations: Education[];
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
